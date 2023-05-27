@@ -10,7 +10,7 @@ enum SolverTypes {
 template <SolverTypes solver, typename Function>
 class ODESolver {
     public:
-        ODESolver(double in_step_size, double in_t_init, double in_y_init);
+        ODESolver(Function in_f, double in_step_size, double in_t_init, double in_y_init);
         void forward_euler();
         void runge_kutta_4();
         void step();
@@ -18,10 +18,12 @@ class ODESolver {
         double step_size;
         double t;
         double y;
+        Function f;
 };
 
 template <SolverTypes solver, typename Function>
-ODESolver<solver, Function>::ODESolver(double in_step_size, double in_t_init, double in_y_init) {
+ODESolver<solver, Function>::ODESolver(Function in_f, double in_step_size, double in_t_init, double in_y_init) {
+    f = in_f;
     step_size = in_step_size;
     t = in_t_init;
     y = in_y_init;
@@ -30,7 +32,7 @@ ODESolver<solver, Function>::ODESolver(double in_step_size, double in_t_init, do
 template <SolverTypes solver, typename Function>
 void ODESolver<solver, Function>::forward_euler() {
     t += step_size;
-    y += step_size * 1;
+    y += step_size * f(t, y);
 }
 
 template <SolverTypes solver, typename Function>
