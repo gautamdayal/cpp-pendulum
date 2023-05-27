@@ -31,13 +31,19 @@ ODESolver<solver, Function>::ODESolver(Function in_f, double in_step_size, doubl
 
 template <SolverTypes solver, typename Function>
 void ODESolver<solver, Function>::forward_euler() {
-    t += step_size;
     y += step_size * f(t, y);
+    t += step_size;
 }
 
 template <SolverTypes solver, typename Function>
 void ODESolver<solver, Function>::runge_kutta_4() {
+    double k1 = step_size * f(t, y);
+    double k2 = step_size * f(t + step_size / 2, y + k1 / 2);
+    double k3 = step_size * f(t + step_size / 2, y + k2 / 2);
+    double k4 = step_size * f(t + step_size, y + k3);
 
+    y += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+    t += step_size;
 }
 
 template <SolverTypes solver, typename Function>
