@@ -14,6 +14,8 @@ class ODESolver {
         void forward_euler();
         void runge_kutta_4();
         void step();
+        double get_t() {return t;}
+        double get_y() {return y;}
     private:
         double step_size;
         double t;
