@@ -20,7 +20,7 @@ class ODESolver {
         double step_size;
         double t;
         double y;
-        Function f;
+        Function* f;
 };
 
 template <SolverTypes solver, typename Function>
