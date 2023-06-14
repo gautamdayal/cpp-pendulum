@@ -31,18 +31,23 @@ double thetaODE(double t, double in_omega) {
 
 double omegaODE(double t, double in_omega) {
     theta += in_omega * 0.01;
-    return (-2 * c * sqrt(g/L) * in_omega) - (g/L * sin(theta));
+    double omega_dot = (-2 * c * sqrt(g/L) * in_omega) - (g/L * sin(theta));
+    omega += omega_dot * 0.01;
+    return omega_dot;
 }
 
 
 int main() {
     ODESolver<RUNGE_KUTTA_4, decltype(thetaODE)> theta_solver = ODESolver<RUNGE_KUTTA_4, decltype(thetaODE)>(thetaODE, 0.01, 0, theta);
     ODESolver<RUNGE_KUTTA_4, decltype(omegaODE)> omega_solver = ODESolver<RUNGE_KUTTA_4, decltype(omegaODE)>(omegaODE, 0.01, 0, omega);
-    for (int i = 0; i < 500; i++) {
+    for (int i = 0; i < 1000; i++) {
         theta_solver.step();
         omega_solver.step();
         theta = theta_solver.get_y();
         omega = omega_solver.get_y();
+
+        double x = L * sin(theta);
+        double y = L * cos(theta);
 
         std::cout << theta_solver.get_t() << " " << theta << " " << omega << std::endl;
     }
