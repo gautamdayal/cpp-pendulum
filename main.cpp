@@ -8,7 +8,7 @@
 // Constants
 const double g = 9.81;
 const double L = 2.0;
-const double c = 0.5;
+const double c = 0.25;
 
 // ODEs
 double thetaODE(double t, double theta, double omega) {

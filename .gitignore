@@ -3,5 +3,6 @@
 **/.vscode
 .DS_Store
 
-# don't commit all the log files
+# don't commit log files or binaries
 logs/*
+bin/*
