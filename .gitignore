@@ -1,4 +1,7 @@
+# VSCode stuff and mac bullshit
 *.vscode
 **/.vscode
 .DS_Store
 
+# don't commit all the log files
+logs/*
