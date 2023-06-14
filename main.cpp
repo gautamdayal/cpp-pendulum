@@ -59,8 +59,8 @@
 
 // Constants
 const double g = 9.81;
-const double L = 1.0;
-const double c = 0.2;
+const double L = 2.0;
+const double c = 0.5;
 
 // ODEs
 double thetaODE(double t, double theta, double omega) {
@@ -73,7 +73,7 @@ double omegaODE(double t, double theta, double omega) {
 
 int main() {
     // Initial conditions
-    double theta0 = M_PI / 4;
+    double theta0 = 3;
     double omega0 = 0.0;
 
     // Step size and time
@@ -84,7 +84,7 @@ int main() {
     ODESolver<RUNGE_KUTTA_4, decltype(thetaODE), decltype(omegaODE)> solver(thetaODE, omegaODE, stepSize, t, theta0, omega0);
 
     // Simulation duration
-    double endTime = 10.0;
+    double endTime = 20.0;
 
     // Simulate and print results
     while (t < endTime) {
