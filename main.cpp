@@ -6,9 +6,9 @@
 #include "ODESolvers.hpp"
 
 // Constants
-const double g = 9.81;
-const double L = 2.0;
-const double c = 0.25;
+constexpr double g = 9.81;
+constexpr double L = 2.0;
+constexpr double c = 0.25;
 
 // ODEs
 double thetaODE(double t, double theta, double omega) {
