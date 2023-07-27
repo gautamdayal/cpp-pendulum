@@ -3,13 +3,14 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <string>
 #include "ODESolvers.hpp"
 #include "raylib.h"
 
 // Constants
 constexpr double g = 20;
 constexpr double L = 2.0;
-constexpr double c = 0.01;
+constexpr double c = 0.1;
 
 constexpr uint16_t kScreenWidth = 1200;
 constexpr uint16_t kScreenHeight = 800;
@@ -81,8 +82,17 @@ int main() {
             DrawLine(x_screen, y_screen, x0_screen, y0_screen, (Color){0, 0, 0, 255});
             DrawCircle(static_cast<int>(x_screen), static_cast<int>(y_screen), 20, (Color){83, 94, 86, 255});
 
-            DrawText("unclechairoh", kScreenWidth-20, kScreenHeight-20, 20, (Color){101, 140, 119, 255});
+            DrawText("unclechairoh", kScreenWidth-135, kScreenHeight-20, 20, (Color){101, 140, 119, 255});
             DrawText("Real Pendulum Simulation", 20, 20, 35, (Color){3, 135, 120, 255});
+
+            // Constants and data
+            DrawText(("g: " + std::to_string(g)).c_str(), 20, 60, 20, (Color){140, 140, 140, 255});
+            DrawText(("L: " + std::to_string(L)).c_str(), 20, 80, 20, (Color){140, 140, 140, 255});
+            DrawText(("c: " + std::to_string(c)).c_str(), 20, 100, 20, (Color){140, 140, 140, 255});
+
+            DrawText(("x: " + std::to_string(x_pos)).c_str(), 20, 140, 20, (Color){160, 160, 160, 255});
+            DrawText(("y: " + std::to_string(y_pos)).c_str(), 20, 160, 20, (Color){160, 160, 160, 255});
+            DrawText(("theta: " + std::to_string(theta)).c_str(), 20, 180, 20, (Color){160, 160, 160, 255});
         EndDrawing(); 
     }
     CloseWindow();
