@@ -7,9 +7,9 @@
 #include "raylib.h"
 
 // Constants
-constexpr double g = 9.81;
+constexpr double g = 20;
 constexpr double L = 2.0;
-constexpr double c = 0.25;
+constexpr double c = 0.01;
 
 constexpr uint16_t kScreenWidth = 1200;
 constexpr uint16_t kScreenHeight = 800;
@@ -49,7 +49,7 @@ int main() {
     ODESolver<RUNGE_KUTTA_4, decltype(thetaODE), decltype(omegaODE)> solver(thetaODE, omegaODE, stepSize, t, theta0, omega0);
 
     // Simulation duration
-    double endTime = 20.0;
+    // double endTime = 20.0;
 
     std::ofstream outfile;
     std::ofstream pos_out;
@@ -61,7 +61,7 @@ int main() {
     InitWindow(kScreenWidth, kScreenHeight, "Real Pendulum Simulation");
     SetTargetFPS(60);
 
-    while (t < endTime) {
+    while (!WindowShouldClose()) {
         solver.step();
         t = solver.get_t();
         double theta = solver.get_y1();
@@ -73,10 +73,17 @@ int main() {
 
         BeginDrawing();
             ClearBackground((Color){245, 245, 245, 255});
-            double x_screen = mapToRange(x_pos, -1, 1, 0, 1200);
-            double y_screen = mapToRange(y_pos, 1, 3, 0, 800);
-            DrawCircle(static_cast<int>(x_screen), static_cast<int>(y_screen), 10, (Color){245, 96, 66, 255});
-        EndDrawing();
+            double x_screen = mapToRange(x_pos, -3, 3, 0, kScreenWidth);
+            double y_screen = mapToRange(y_pos, 0, 4, 0, kScreenHeight);
+            double x0_screen = mapToRange(0, -3, 3, 0, kScreenWidth);
+            double y0_screen = mapToRange(0, 0, 4, 0, kScreenHeight);
+
+            DrawLine(x_screen, y_screen, x0_screen, y0_screen, (Color){0, 0, 0, 255});
+            DrawCircle(static_cast<int>(x_screen), static_cast<int>(y_screen), 20, (Color){83, 94, 86, 255});
+
+            DrawText("unclechairoh", kScreenWidth-20, kScreenHeight-20, 20, (Color){101, 140, 119, 255});
+            DrawText("Real Pendulum Simulation", 20, 20, 35, (Color){3, 135, 120, 255});
+        EndDrawing(); 
     }
     CloseWindow();
     outfile.close();
