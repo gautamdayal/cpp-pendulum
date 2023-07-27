@@ -1,5 +1,6 @@
 main:
-	clang++ -std=c++11 main.cpp -o bin/exec
+	clang++ -std=c++11 main.cpp -lstdc++ -framework IOKit -framework Cocoa -framework OpenGL `pkg-config --libs --cflags raylib` -o bin/exec
+
 
 plot:
 	./bin/exec
