@@ -1,5 +1,5 @@
 main:
-	clang++ -std=c++20 main.cpp Graph.cpp -lstdc++  -framework IOKit -framework Cocoa -framework OpenGL `pkg-config --libs --cflags raylib` -o bin/exec
+	clang++ -std=c++20 src/main.cpp src/Graph.cpp -lstdc++  -framework IOKit -framework Cocoa -framework OpenGL `pkg-config --libs --cflags raylib` -o bin/exec
 
 
 plot:

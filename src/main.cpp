@@ -25,8 +25,8 @@ int main() {
 
     std::ofstream outfile;
     std::ofstream pos_out;
-    outfile.open("logs/pendulum_out.txt");
-    pos_out.open("logs/positions_out.txt");
+    outfile.open("../logs/pendulum_out.txt");
+    pos_out.open("../logs/positions_out.txt");
     outfile << g << " " << L << " " << c << std::endl;
     // pos_out << "x y" << std::endl;
     // Simulate and print results
