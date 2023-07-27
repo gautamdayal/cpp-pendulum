@@ -5,11 +5,11 @@ Graph::Graph() {
 }
 
 double Graph::GetXAt(size_t idx) {
-    return 0;
+    return x_data.at(idx);
 }
 
 double Graph::GetYAt(size_t idx) {
-    return 0;
+    return y_data.at(idx);
 }
 
 int Graph::GetXLim() {
