@@ -5,15 +5,22 @@
 
 class Graph {
     public:
-        Graph();
+        Graph(int, int, int, int);
         double GetXAt(size_t idx);
         double GetYAt(size_t idx);
-        int GetXLim();
-        int GetYLim();
+        int GetXSize();
+        int GetYSize();
+        int GetXPos();
+        int GetYPos();
         void Draw();
     private:
         std::vector<double> x_data;
         std::vector<double> y_data;
-        int x_axis_size;
-        int y_axis_size;
+        int xMin;
+        int xMax;
+        int yMin;
+        int yMax;
+
+        int pos_x;
+        int pos_y;
 };

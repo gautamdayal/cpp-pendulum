@@ -64,6 +64,7 @@ int main() {
             DrawText(("x: " + std::to_string(x_pos)).c_str(), 20, 140, 20, (Color){160, 160, 160, 255});
             DrawText(("y: " + std::to_string(y_pos)).c_str(), 20, 160, 20, (Color){160, 160, 160, 255});
             DrawText(("theta: " + std::to_string(theta)).c_str(), 20, 180, 20, (Color){160, 160, 160, 255});
+            DrawText(("omega: " + std::to_string(omega)).c_str(), 20, 200, 20, (Color){160, 160, 160, 255});
         EndDrawing(); 
     }
     CloseWindow();
