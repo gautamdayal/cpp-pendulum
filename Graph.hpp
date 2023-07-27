@@ -10,6 +10,7 @@ class Graph {
         double GetYAt(size_t idx);
         int GetXLim();
         int GetYLim();
+        void Draw();
     private:
         std::vector<double> x_data;
         std::vector<double> y_data;

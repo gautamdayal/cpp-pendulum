@@ -19,3 +19,7 @@ int Graph::GetXLim() {
 int Graph::GetYLim() {
     return 0;
 }
+
+void Graph::Draw() {
+    
+}
