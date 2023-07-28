@@ -3,7 +3,6 @@ main:
 
 
 plot:
-	./bin/exec
 	python3.11 scripts/plotter.py
 
 all:

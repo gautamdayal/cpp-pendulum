@@ -1,11 +1,16 @@
 #pragma once
 
 #include <cmath>
+#include <map>
+#include <string>
 
 enum SolverTypes {
     FORWARD_EULER,
     RUNGE_KUTTA_4
 };
+
+std::map<int, std::string> solver_type_names = {{FORWARD_EULER, "Forward Euler"}, {RUNGE_KUTTA_4, "Runge Kutta 4"}};
+
 
 template <SolverTypes solver, typename Function1, typename Function2>
 class ODESolver {

@@ -7,6 +7,7 @@
 #include "raylib.h"
 #include "Equations.hpp"
 
+constexpr SolverTypes type = RUNGE_KUTTA_4;
 
 int main() {
     // Initial conditions
@@ -17,16 +18,29 @@ int main() {
     double stepSize = 0.01;
     double t = 0.0;
 
-    // Create ODESolver objects
-    ODESolver<RUNGE_KUTTA_4, decltype(thetaODE), decltype(omegaODE)> solver(thetaODE, omegaODE, stepSize, t, theta0, omega0);
+    // Create ODESolver object
+    ODESolver<type, decltype(thetaODE), decltype(omegaODE)> solver(thetaODE, omegaODE, stepSize, t, theta0, omega0);
 
     // Simulation duration
     // double endTime = 20.0;
 
     std::ofstream outfile;
     std::ofstream pos_out;
-    outfile.open("../logs/pendulum_out.txt");
-    pos_out.open("../logs/positions_out.txt");
+    outfile.open("logs/pendulum_out.txt");
+    pos_out.open("logs/positions_out.txt");
+
+    if (outfile) {
+        std::cout << "Outfile opened successfully" << std::endl;
+    } else {
+        std::cout << "Outfile open failed" << std::endl;
+    }
+
+    if (pos_out) {
+        std::cout << "Pos out opened successfully" << std::endl;
+    } else {
+        std::cout << "Pos out open failed" << std::endl;
+    }
+
     outfile << g << " " << L << " " << c << std::endl;
     // pos_out << "x y" << std::endl;
     // Simulate and print results
@@ -65,9 +79,11 @@ int main() {
             DrawText(("y: " + std::to_string(y_pos)).c_str(), 20, 160, 20, (Color){160, 160, 160, 255});
             DrawText(("theta: " + std::to_string(theta)).c_str(), 20, 180, 20, (Color){160, 160, 160, 255});
             DrawText(("omega: " + std::to_string(omega)).c_str(), 20, 200, 20, (Color){160, 160, 160, 255});
+
+            DrawText(("ODE Solver: " + solver_type_names[type]).c_str(), 20, 240, 20, (Color){160, 160, 160, 255});
         EndDrawing(); 
     }
-    CloseWindow();
     outfile.close();
+    CloseWindow();
     return 0;
 }
