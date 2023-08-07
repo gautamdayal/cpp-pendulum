@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include <vector>
 #include <utility>
+#include "Equations.hpp"
 
 struct GraphInputs {
     double x_min;

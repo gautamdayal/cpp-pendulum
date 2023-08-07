@@ -6,6 +6,7 @@
 #include "ODESolvers.hpp"
 #include "raylib.h"
 #include "Equations.hpp"
+#include "Graph.hpp"
 
 constexpr SolverTypes type = RUNGE_KUTTA_4;
 

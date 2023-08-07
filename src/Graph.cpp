@@ -1,5 +1,5 @@
 #include "Graph.hpp"
-// #include "Equations.hpp"
+
 // #include <algorithm>
 
 Graph::Graph(GraphInputs initializer) {
@@ -30,7 +30,11 @@ int Graph::GetYPos() {
 }
 
 void Graph::Draw() {
-    // Calculating screen coordinates:
-    
-    // double screen_x = mapToRange();
+    DrawRectangle(this->screen_range_x.first, this->screen_range_y.first, 
+                this->screen_range_x.second - this->screen_range_x.first, 
+                this->screen_range_y.second - this->screen_range_y.first,(Color){173, 255, 231, 255});
+    for (size_t i = 0; i < x_data.size(); i++) {
+        // mapToRa
+        // DrawPixel();
+    }
 }
