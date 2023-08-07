@@ -6,10 +6,6 @@
 #include "Equations.hpp"
 
 struct GraphInputs {
-    double x_min;
-    double x_max;
-    double y_min;
-    double y_max;
     int screen_x_min;
     int screen_x_max;
     int screen_y_min;
@@ -24,11 +20,9 @@ class Graph {
         int GetXPos();
         int GetYPos();
         void Draw();
-    private:
         std::vector<double> x_data;
         std::vector<double> y_data;
-        std::pair<double, double> x_range;
-        std::pair<double, double> y_range;
+    private:
         std::pair<double, double> screen_range_x;
         std::pair<double, double> screen_range_y;
 

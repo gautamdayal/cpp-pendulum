@@ -3,10 +3,6 @@
 // #include <algorithm>
 
 Graph::Graph(GraphInputs initializer) {
-    x_range.first = initializer.x_min;
-    x_range.second = initializer.x_max;
-    y_range.first = initializer.y_min;
-    y_range.second = initializer.y_max;
     screen_range_x.first = initializer.screen_x_min;
     screen_range_x.second = initializer.screen_x_max;
     screen_range_y.first = initializer.screen_y_min;
@@ -34,7 +30,12 @@ void Graph::Draw() {
                 this->screen_range_x.second - this->screen_range_x.first, 
                 this->screen_range_y.second - this->screen_range_y.first,(Color){173, 255, 231, 255});
     for (size_t i = 0; i < x_data.size(); i++) {
-        // mapToRa
-        // DrawPixel();
+        double x_min = GetVectorMin(x_data);
+        double x_max = GetVectorMax(x_data);
+        double y_min = GetVectorMin(y_data);
+        double y_max = GetVectorMax(y_data);
+        double x_screen = mapToRange(x_data.at(i), x_min, x_max, screen_range_x.first, screen_range_x.second);
+        double y_screen = mapToRange(y_data.at(i), y_min, y_max, screen_range_y.first, screen_range_y.second);
+        DrawPixel(x_screen, y_screen, (Color){0, 0, 0, 255});
     }
 }
