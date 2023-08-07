@@ -5,7 +5,7 @@
 // Constants
 constexpr double g = 30;
 constexpr double L = 1.5;
-constexpr double c = 0.5;
+constexpr double c = 0.1;
 
 constexpr uint16_t kScreenWidth = 1200;
 constexpr uint16_t kScreenHeight = 800;

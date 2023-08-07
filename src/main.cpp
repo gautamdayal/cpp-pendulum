@@ -48,10 +48,10 @@ int main() {
     InitWindow(kScreenWidth, kScreenHeight, "Real Pendulum Simulation");
     SetTargetFPS(60);
     GraphInputs params = {
-        .screen_x_min = 600,
-        .screen_x_max = 800,
-        .screen_y_min = 1000,
-        .screen_y_max = 1200
+        .screen_x_min = 800,
+        .screen_x_max = 1100,
+        .screen_y_min = 50,
+        .screen_y_max = 350
     };
 
     Graph phase_portrait = Graph(params);
@@ -64,8 +64,8 @@ int main() {
         double x_pos = get_x_pos(theta, L);
         double y_pos = get_y_pos(theta, L);
 
-        phase_portrait.x_data.push_back(x_pos);
-        phase_portrait.y_data.push_back(y_pos);
+        phase_portrait.x_data.push_back(theta);
+        phase_portrait.y_data.push_back(omega);
         pos_out << x_pos << " " << y_pos << std::endl;
         outfile << t << " " << theta << " " << omega << std::endl;
         
@@ -94,7 +94,10 @@ int main() {
             DrawText(("omega: " + std::to_string(omega)).c_str(), 20, 200, 20, (Color){160, 160, 160, 255});
 
             DrawText(("ODE Solver: " + solver_type_names[type]).c_str(), 20, 240, 20, (Color){160, 160, 160, 255});
+
             phase_portrait.Draw();
+
+           
         EndDrawing(); 
     }
     outfile.close();
