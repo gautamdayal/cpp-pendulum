@@ -1,4 +1,6 @@
+#pragma once
 #include <cmath>
+// #include <vector>
 
 // Constants
 constexpr double g = 30;
@@ -29,3 +31,23 @@ double mapToRange(double value, double minFrom, double maxFrom, double minTo, do
     double result = (value - minFrom) * (maxTo - minTo) / (maxFrom - minFrom) + minTo;
     return result;
 }
+
+// double GetVectorMax(std::vector<double> input_vec) {
+//     double curr_max = (double) INT16_MIN;
+//     for (double item : input_vec) {
+//         if (item > curr_max) {
+//             curr_max = item;
+//         }
+//     }
+//     return curr_max;
+// }
+
+// double GetVectorMin(std::vector<double> input_vec) {
+//     double curr_min = (double) INT16_MAX;
+//     for (double item : input_vec) {
+//         if (item < curr_min) {
+//             curr_min = item;
+//         }
+//     }
+//     return curr_min;
+// }

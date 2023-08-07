@@ -1,26 +1,24 @@
 #include "Graph.hpp"
+// #include "Equations.hpp"
+// #include <algorithm>
 
-Graph::Graph(int x_min_in, int x_max_in, int y_min_in, int y_max_in) {
-    xMin = x_min_in;
-    xMax = x_max_in;
-    yMin = y_min_in;
-    yMax = y_max_in;
+Graph::Graph(GraphInputs initializer) {
+    x_range.first = initializer.x_min;
+    x_range.second = initializer.x_max;
+    y_range.first = initializer.y_min;
+    y_range.second = initializer.y_max;
+    screen_range_x.first = initializer.screen_x_min;
+    screen_range_x.second = initializer.screen_x_max;
+    screen_range_y.first = initializer.screen_y_min;
+    screen_range_y.second = initializer.screen_y_max;
 }
 
-double Graph::GetXAt(size_t idx) {
-    return x_data.at(idx);
+void Graph::SetXAt(size_t idx, double data) {
+    x_data[idx] = data;
 }
 
-double Graph::GetYAt(size_t idx) {
-    return y_data.at(idx);
-}
-
-int Graph::GetXSize() {
-    return xMax - xMin;
-}
-
-int Graph::GetYSize() {
-    return yMax - yMin;
+void Graph::SetYAt(size_t idx, double data) {
+    y_data[idx] = data;
 }
 
 int Graph::GetXPos() {
@@ -32,5 +30,7 @@ int Graph::GetYPos() {
 }
 
 void Graph::Draw() {
+    // Calculating screen coordinates:
     
+    // double screen_x = mapToRange();
 }
