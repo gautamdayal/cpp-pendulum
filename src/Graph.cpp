@@ -1,4 +1,5 @@
 #include "Graph.hpp"
+#include <iostream>
 
 // #include <algorithm>
 
@@ -26,15 +27,20 @@ int Graph::GetYPos() {
 }
 
 void Graph::Draw() {
-    // DrawRectangle(1000, 600, 200, 200, (Color){173, 255, 231, 255});
-
     DrawRectangle(this->screen_range_x.first, this->screen_range_y.first, 
                 this->screen_range_x.second - this->screen_range_x.first, 
                 this->screen_range_y.second - this->screen_range_y.first,(Color){173, 255, 231, 255});
-    double x_prev, y_prev;
-    double x_min, y_min = (double) INT16_MAX;
-    double x_max, y_max = (double) INT16_MIN;
+    DrawRectangleLines(this->screen_range_x.first, this->screen_range_y.first, 
+                this->screen_range_x.second - this->screen_range_x.first, 
+                this->screen_range_y.second - this->screen_range_y.first,(Color){0, 0, 0, 255});
+    
+    // double x_prev, y_prev;
+    static double y_min = (double) INT16_MAX;
+    static double x_min = (double) INT16_MAX;
+    static double x_max = (double) INT16_MIN; 
+    static double y_max = (double) INT16_MIN;
     for (size_t i = 0; i < x_data.size(); i++) {
+        // std::cout << x_data.at(i) << std::endl;
         if (x_data.at(i) > x_max) {
             x_max = x_data.at(i);
         }

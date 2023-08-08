@@ -94,7 +94,7 @@ int main() {
             DrawText(("omega: " + std::to_string(omega)).c_str(), 20, 200, 20, (Color){160, 160, 160, 255});
 
             DrawText(("ODE Solver: " + solver_type_names[type]).c_str(), 20, 240, 20, (Color){160, 160, 160, 255});
-
+            
             phase_portrait.Draw();
 
            
