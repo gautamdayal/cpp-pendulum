@@ -8,6 +8,8 @@
 #include "Equations.hpp"
 #include "Graph.hpp"
 
+// #define LOGGING
+
 constexpr SolverTypes type = RUNGE_KUTTA_4;
 
 int main() {
@@ -24,7 +26,7 @@ int main() {
 
     // Simulation duration
     // double endTime = 20.0;
-
+    #ifdef LOGGING
     std::ofstream outfile;
     std::ofstream pos_out;
     outfile.open("logs/pendulum_out.txt");
@@ -43,6 +45,7 @@ int main() {
     }
 
     outfile << g << " " << L << " " << c << std::endl;
+    #endif
     // pos_out << "x y" << std::endl;
     // Simulate and print results
     InitWindow(kScreenWidth, kScreenHeight, "Real Pendulum Simulation");
@@ -66,9 +69,11 @@ int main() {
 
         phase_portrait.x_data.push_back(theta);
         phase_portrait.y_data.push_back(omega);
+
+        #ifdef LOGGING
         pos_out << x_pos << " " << y_pos << std::endl;
         outfile << t << " " << theta << " " << omega << std::endl;
-        
+        #endif
 
         BeginDrawing();
             ClearBackground((Color){245, 245, 245, 255});
@@ -94,13 +99,15 @@ int main() {
             DrawText(("omega: " + std::to_string(omega)).c_str(), 20, 200, 20, (Color){160, 160, 160, 255});
 
             DrawText(("ODE Solver: " + solver_type_names[type]).c_str(), 20, 240, 20, (Color){160, 160, 160, 255});
-            
+
             phase_portrait.Draw();
 
            
         EndDrawing(); 
     }
+    #ifdef LOGGING
     outfile.close();
+    #endif
     CloseWindow();
     return 0;
 }
