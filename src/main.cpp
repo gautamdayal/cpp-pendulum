@@ -60,6 +60,9 @@ int main() {
     Graph phase_portrait = Graph(params);
 
     while (!WindowShouldClose()) {
+
+            
+        
         solver.step();
         t = solver.get_t();
         double theta = solver.get_y1();

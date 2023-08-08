@@ -6,3 +6,6 @@
 # don't commit log files or binaries
 logs/*
 bin/*
+
+# Don't commit video file
+*.mp4

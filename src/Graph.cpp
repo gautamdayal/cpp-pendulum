@@ -27,9 +27,10 @@ int Graph::GetYPos() {
 }
 
 void Graph::Draw() {
+    DrawText("System Phase Portrait", this->screen_range_x.first, this->screen_range_y.first - 25, 25, (Color){140, 140, 140, 255});
     DrawRectangle(this->screen_range_x.first, this->screen_range_y.first, 
                 this->screen_range_x.second - this->screen_range_x.first, 
-                this->screen_range_y.second - this->screen_range_y.first,(Color){173, 255, 231, 255});
+                this->screen_range_y.second - this->screen_range_y.first,(Color){204, 255, 236, 255});
     DrawRectangleLines(this->screen_range_x.first, this->screen_range_y.first, 
                 this->screen_range_x.second - this->screen_range_x.first, 
                 this->screen_range_y.second - this->screen_range_y.first,(Color){0, 0, 0, 255});
@@ -61,9 +62,6 @@ void Graph::Draw() {
             DrawLine(x_prev, y_prev, x_screen, y_screen, (Color){0, 0, 0, 255});
         }
         x_prev = x_screen;
-        y_prev = y_screen;
-
-        // DrawPixel(x_screen, y_screen, (Color){0, 0, 0, 255});
-        
+        y_prev = y_screen;        
     }
 }
